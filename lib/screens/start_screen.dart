@@ -1,3 +1,6 @@
+import 'package:componentes/screens/first_screen.dart';
+import 'package:componentes/screens/second_screen.dart';
+import 'package:componentes/screens/third_screen.dart';
 import 'package:flutter/material.dart';
 
 class StartScreen extends StatefulWidget {
@@ -17,14 +20,37 @@ class _StartScreenState extends State<StartScreen> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectendIndex,
         items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.important_devices_sharp), label: 'Inicio'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Perfil'),
-          BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Configuración'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.important_devices_sharp),
+            label: 'Inicio'
+            ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person), 
+            label: 'Perfil'
+            ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings), 
+            label: 'Configuración'),
         ],
         onTap: (index) {
-          setState(() {
-            _selectendIndex = index;
-          });
+          if(index == 0){
+            setState(() {
+              _selectendIndex = index;
+              Navigator.push(context, MaterialPageRoute(builder: (context) => FirstScreen()));
+            });
+          }
+          else if(index == 1){
+              setState(() {
+              _selectendIndex = index;
+              Navigator.push(context, MaterialPageRoute(builder: (context) => SecondScreen()));
+            });
+          }
+          else if(index == 2){
+              setState(() {
+              _selectendIndex = index;
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ThirdScreen()));
+            });
+          }
         },
       ),
     );
